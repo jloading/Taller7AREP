@@ -1,25 +1,41 @@
-# TALLER 6: PATRONES ARQUITECTURALES
+# TALLER 7: APLICACIÓN DISTRIBUIDA SEGURA EN TODOS SUS FRENTES
 
 ### Demo del proyecto (por si no corre): https://youtu.be/5xfDRMQtiXI
 
-En este taller se aprenderá a crear instancias EC2 en AWS, crear imágenes compatibles y desplegarlas en la misma.
+En este taller se implementará una aplicación encargada de garantizar autenticación, autorización e integridad de usuarios.
 
 ### Prerrequisitos
 
 - Java: Es un lenguaje de programación de propósito general orientado a objetos, portátil y muy versátil.
 - Maven: Es una herramienta que maneja el ciclo de vida del programa.
 - Git: Es un sistema de control de versiones distribuido (VCS).
-- Docker: Es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software.
 
-### Qué se implementó
-- Round Robin: La aplicación consta de dos partes: un cliente web y un servicio REST. El cliente web incluye un campo y un botón, y cuando el usuario envía un mensaje, este se transmite al servicio REST. Luego, la pantalla se actualiza con la información devuelta por el servicio en formato JSON. El servicio REST recibe la cadena y emplea un algoritmo de equilibrio de carga Round Robin para distribuir el procesamiento del mensaje y la obtención de la respuesta entre las tres instancias del servicio.
+### Qué se hizo
+1. Se desarrolló una clase encargada de registrar usuarios y sus contraseñas hash, verifica los usuarios y los redirige a una página de confirmación
 
-- MongoDB: El servicio MongoDB es una instancia de MongoDB que se ejecuta en un contenedor de Docker dentro de una máquina virtual de EC2. En este entorno, se almacenan los mensajes enviados por el usuario.
-  
-- Se implementó la siguiente arquitectura para la aplicación:
-<img width="671" alt="Captura de pantalla 2023-10-05 a la(s) 2 06 24 a m" src="https://github.com/jloading/Taller6AREP-App/assets/65261708/43786346-30bb-47bd-bc43-3c2f2a0ee951">
+<img width="1013" alt="Captura de pantalla 2023-10-21 a la(s) 12 13 06 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/dc4ada84-6996-478f-af3e-b31388508cda">
 
+2. Se creó una instancia de EC2 en AWS y posteriormente se subieron las clases y las credenciales a través de sftp al servidor
 
+<img width="643" alt="Captura de pantalla 2023-10-21 a la(s) 12 18 57 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/31595b84-c9f3-4d69-bfe5-a0362bcf9869">
+<img width="650" alt="Captura de pantalla 2023-10-21 a la(s) 12 20 39 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/ef8221f6-5600-46ec-a165-9004781ead48">
+
+3. Se descomprimen las clases y sus dependencias
+
+<img width="648" alt="Captura de pantalla 2023-10-21 a la(s) 12 22 07 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/d682bf6c-f471-47a4-b63b-676267192492">
+
+4. Se ejecuta la clase Login
+
+<img width="649" alt="Captura de pantalla 2023-10-21 a la(s) 12 28 30 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/28611948-6857-4191-9c58-241cc54af057">
+
+5. Se accede a la direccíon
+```
+https://ec2-3-90-207-33.compute-1.amazonaws.com:5001/login.html
+```
+
+<img width="1418" alt="Captura de pantalla 2023-10-21 a la(s) 12 29 46 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/8450f446-61d5-4f5a-bce5-35f436ea77da">
+
+   
 ### Instalación
 
 1. Clonar los dos repositorios:
