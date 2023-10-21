@@ -1,6 +1,6 @@
 # TALLER 7: APLICACIÓN DISTRIBUIDA SEGURA EN TODOS SUS FRENTES
 
-### Demo del proyecto (por si no corre): https://youtu.be/5xfDRMQtiXI
+### Demo del proyecto (por si no corre): https://youtu.be/3h5ViI-fu4k
 
 En este taller se implementará una aplicación encargada de garantizar autenticación, autorización e integridad de usuarios.
 
