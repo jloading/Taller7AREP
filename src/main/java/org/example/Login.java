@@ -25,7 +25,7 @@ public class Login {
 
             if (users.containsKey(username) && users.get(username).equals(hashGenerator(password))) {
                 System.out.println("Login Success");
-                res.redirect("/loggedInPage.html");
+                res.redirect("https://ec2-54-226-243-70.compute-1.amazonaws.com:5001/loggedInPage.html");
             }
 
             return "There was an error, try again";
