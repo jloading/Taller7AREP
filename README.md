@@ -36,88 +36,74 @@ https://ec2-3-90-207-33.compute-1.amazonaws.com:5001/login.html
 <img width="1418" alt="Captura de pantalla 2023-10-21 a la(s) 12 29 46 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/8450f446-61d5-4f5a-bce5-35f436ea77da">
 
    
-### Instalación
+### Instalación y ejecución
 
-1. Clonar los dos repositorios:
+### * Local:
 
-```
-https://github.com/jloading/Taller6AREP-App.git
-```
+1. Clonar el repositorio:
 
 ```
-https://github.com/jloading/Taller6AREP-Service.git
+https://github.com/jloading/Taller7AREP.git
 ```
 
 2. Se construye el proyecto con Maven
 
 ```
-mvn package
+mvn clean install
 ```
 
-**Nota:** Si desea ejecutar la aplicación sin descargar las imágenes directamente de los repositorios (como se indica abajo), deberá crear las imágenes correspondientes a cada repositorio que clonó y la de MongoDB. Luego, simplemente siga los mismos pasos explicados abajo, pero reemplace las imágenes de los repositorios por las que creó. 
-
-### Corriendo la aplicación
-
-### * Usando Docker:
-Ingrese los siguientes comandos en su terminal (en el orden que se muestran)
+3. Se ejecuta la clase Login con el comando
 
 ```
-docker network create my_network
+java -cp "target/classes:target/dependency/*" org.example.Login
 ```
 
+4. Se accede a la dirección
 ```
-docker run -d -p 36000:4567 --name logger-app --network my_network jloading9/taller6arep-app
-```
-
-```
-docker run -d -p 36001:4568 --name logger-service1 --network my_network jloading9/taller6-service
+https://localhost:5001/login.html
 ```
 
-```
-docker run -d -p 36002:4568 --name logger-service2 --network my_network jloading9/taller6-service
-```
-
-```
-docker run -d -p 36003:4568 --name logger-service3 --network my_network jloading9/taller6-service
-```
-
-```
-docker run -d -p 27017:27017 -v mongodb:/data/db -v mongodb_config:/data/configdb --name db --network my_network mongo:7.0.2 mongod
-```
-
-Luego de ejecutar los comandos correctamente, se ingresa a la dirección
-
-```
-http://localhost:36000
-```
-
-<img width="677" alt="Captura de pantalla 2023-10-05 a la(s) 2 26 33 a m" src="https://github.com/jloading/Taller6AREP-App/assets/65261708/a92835e8-3749-4ac5-b6a1-73b8df355455">
+<img width="695" alt="Captura de pantalla 2023-10-21 a la(s) 12 39 23 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/c4c393f5-b1b9-4fce-8728-f2b690806613">
 
 ### * A través de AWS:
 
-Se ingresa a la siguiente dirección:
+1. Se accede a la dirección
+```
+https://ec2-3-90-207-33.compute-1.amazonaws.com:5001/login.html
+```
+
+<img width="1126" alt="Captura de pantalla 2023-10-21 a la(s) 12 41 01 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/1c5d07b2-b891-4fb4-bd14-4447a0f50429">
+
+### Pruebas
+
+Al acceder a la dirección
 
 ```
-http://ec2-54-92-196-10.compute-1.amazonaws.com:36000/
+https://ec2-3-90-207-33.compute-1.amazonaws.com:5001/login.html
 ```
 
-Luego de haber ajustado la configuración de seguridad de la instancia para permitir el paso del tráfico a través de los puertos que requerimos, nos conectamos a la instancia mediante SSH y ejecutamos los comandos que se detallaron anteriormente para poner en marcha las instancias de los recursos que necesitamos utilizar. Una vez completado este proceso, fue posible acceder al servicio a través de la URL proporcionada.
+Podrá ingresar distintos usuarios y contraseñas, al ingresar una combinación incorrecta, verá
 
-<img width="617" alt="Captura de pantalla 2023-10-05 a la(s) 2 27 01 a m" src="https://github.com/jloading/Taller6AREP-App/assets/65261708/a1cf2562-0b86-4c25-b2d0-1b88ea726fcb">
+<img width="1034" alt="Captura de pantalla 2023-10-21 a la(s) 12 44 10 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/154689fc-7e1a-4d2f-b8b9-cde1f4559ca8">
 
+Si ingresa la combinacíon correcta (Username: user, Password: password), verá
 
+<img width="1021" alt="Captura de pantalla 2023-10-21 a la(s) 12 45 26 a  m" src="https://github.com/jloading/Taller7AREP/assets/65261708/03b5159b-30c4-4a22-a810-bcc090e81aff">
 
-## Hecho con
+### Explique como escalaría su arquitectura de seguridad para incorporar nuevos servicios
+
+Para mejorar la seguridad en la clase Login, es importante no almacenar contraseñas directamente en el código, utilizar contraseñas seguras con hashing, y asegurarse de que solo usuarios autorizados tengan acceso a las funciones y datos necesarios. 
+
+### Hecho con
 
 * Java: Lenguaje de programación de propósito general con enfoque a el paradigma de orientado a objetos, y con un fuerte tipado de variables.
 * Git: Es un sistema de control de versiones distribuido (VCS).
 * Maven: Es una herramienta que estandariza la configuración del ciclo de vida del proyecto.
 * HTML: Es un lenguaje de marcado que estructura una página web y su contenido.
 * JavaScript: Lenguaje de programación que los desarrolladores utilizan para hacer paginas web dinamicas.
-* Docker: Es un proyecto de código abierto que automatiza el despliegue de aplicaciones dentro de contenedores de software, proporcionando una capa adicional de abstracción y automatización de virtualización de aplicaciones en múltiples sistemas operativos.
 * AWS: Es una colección de servicios de computación en la nube pública (también llamados servicios web) que en conjunto forman una plataforma de computación en la nube, ofrecidas a través de Internet por Amazon.com.
 
-## Autor
+### Autor
 
 * **Juan Carlos Acosta**
 
